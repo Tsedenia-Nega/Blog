@@ -6,11 +6,11 @@ export default function Home() {
 
   return (
     <main className="max-w-6xl mx-auto py-20 px-6">
-      <header className="mb-16">
-        <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+      <header className="mb-8 ">
+        <h1 className="text-4xl text-center font-extrabold tracking-tight text-slate-900 sm:text-5xl">
           Latest Stories
         </h1>
-        <p className="mt-4 text-slate-500 text-lg">
+        <p className="mt-4 text-center text-slate-500 text-lg">
           Detailed guides and technical deep-dives.
         </p>
       </header>
@@ -19,7 +19,7 @@ export default function Home() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => (
           <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
-            <article className="h-full flex flex-col p-8 bg-white border border-slate-200 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <article className="h-full flex flex-col p-8 bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <div className="relative h-48 w-full overflow-hidden bg-slate-200">
                 <img
                   src={
@@ -30,7 +30,7 @@ export default function Home() {
                   className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
-              <time className="text-xs font-bold uppercase tracking-widest text-blue-600">
+              <time className="text-xs pt-2 font-bold uppercase tracking-widest text-blue-600">
                 {post.date}
               </time>
               <h2 className="text-2xl font-bold text-slate-900 mt-4 group-hover:text-blue-600 transition">

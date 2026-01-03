@@ -8,11 +8,11 @@ export default function RootLayout({ children }) {
           <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
             <a
               href="/"
-              className="text-lg font-bold tracking-tighter text-slate-900"
+              className="text-xl font-bold tracking-tighter text-slate-800"
             >
-              DEV<span className="text-blue-600">BLOG</span>
+              TSED<span className="text-blue-500">LOGS</span>
             </a>
-            <div className="flex gap-8 text-sm font-medium text-slate-600">
+            <div className="flex gap-8 text-base font-medium text-slate-600">
               <a href="/" className="hover:text-blue-600 transition">
                 Articles
               </a>
@@ -25,8 +25,8 @@ export default function RootLayout({ children }) {
             </div>
           </div>
         </nav>
-        <div className="pt-16">
-          {" "}
+        <div className="pt-4">
+          {/* {" "} */}
           {/* Space for fixed nav */}
           {children}
         </div>

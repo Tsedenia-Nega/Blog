@@ -11,16 +11,16 @@ export default async function Post({ params }) {
       <div className="max-w-2xl mx-auto">
         <Link
           href="/"
-          className="text-sm font-medium text-blue-600 hover:text-blue-700 mb-12 inline-block"
+          className="text-lg font-medium text-blue-600 hover:text-blue-700 mb-4 inline-block"
         >
-          ← Back to overview
+          ← Back
         </Link>
 
         <article>
           {post.data.image && (
             <img
               src={post.data.image}
-              className="w-full h-[400px] object-cover rounded-[32px] mb-12 shadow-2xl"
+              className="w-full h-[400px] object-cover rounded-[32px] mb-8 shadow-2xl"
               alt={post.data.title}
             />
           )}
