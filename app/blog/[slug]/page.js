@@ -20,7 +20,7 @@ export default async function Post({ params }) {
           {post.data.image && (
             <img
               src={post.data.image}
-              className="w-full h-[400px] object-cover rounded-[32px] mb-8 shadow-2xl"
+              className="w-full h-100 object-cover rounded-3xl mb-8 shadow-2xl"
               alt={post.data.title}
             />
           )}
