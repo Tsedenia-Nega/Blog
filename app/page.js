@@ -1,61 +1,38 @@
-import { getAllPosts } from "@/lib/posts";
+import { getActivePosts } from "@/lib/supabase"; // Import database logic
 import Link from "next/link";
 
-export default function Home() {
-  const posts = getAllPosts();
+export default async function Home() {
+  const posts = await getActivePosts(); // Fetch from Supabase now
 
   return (
-    <main className="max-w-6xl mx-auto py-20 px-6">
-      <header className="mb-8 ">
-        <h1 className="text-4xl text-center font-extrabold tracking-tight text-slate-900 sm:text-5xl">
-          Latest Stories
-        </h1>
-        <p className="mt-4 text-center text-slate-500 text-lg">
-          Detailed guides and technical deep-dives.
-        </p>
-      </header>
-
-      {/* The Card Grid */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <main className="max-w-6xl mx-auto px-6 py-20">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {posts.map((post) => (
-          <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
-            <article className="h-full flex flex-col p-8 bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <div className="relative h-48 w-full overflow-hidden bg-slate-200">
+          <Link key={post.id} href={`/blog/${post.slug}`}>
+            <article className="bg-white rounded-[32px] border border-slate-100 overflow-hidden shadow-sm hover:shadow-xl transition-all">
+              <div className="h-48 overflow-hidden">
                 <img
-                  src={
-                    post.image ||
-                    "https://images.unsplash.com/photo-1555066931-4365d14bab8c"
-                  }
+                  src={post.image_url}
+                  className="object-cover w-full h-full"
                   alt={post.title}
-                  className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
-              <time className="text-xs pt-2 font-bold uppercase tracking-widest text-blue-600">
-                {post.date}
-              </time>
-              <h2 className="text-2xl font-bold text-slate-900 mt-4 group-hover:text-blue-600 transition">
-                {post.title}
-              </h2>
-              <p className="mt-4 text-slate-600 leading-relaxed text-sm line-clamp-3">
-                Exploring the architecture of {post.title}. A deep dive into
-                modern development practices and performance optimization.
-              </p>
-
-              <div className="mt-auto pt-8 flex items-center text-sm font-semibold text-slate-900">
-                Read Full Post
-                <svg
-                  className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+              <div className="p-6">
+                <span className="text-blue-600 text-xs font-bold uppercase tracking-wider">
+                  {post.categories?.name}
+                </span>
+                <h2 className="text-xl font-bold text-slate-900 mt-2">
+                  {post.title}
+                </h2>
+                <div className="flex items-center gap-2 mt-4">
+                  <img
+                    src={post.authors?.avatar_url}
+                    className="w-6 h-6 rounded-full"
                   />
-                </svg>
+                  <span className="text-sm text-slate-500">
+                    {post.authors?.name}
+                  </span>
+                </div>
               </div>
             </article>
           </Link>
